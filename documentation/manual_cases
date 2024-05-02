@@ -1,0 +1,183 @@
+
+
+I will write this tests for account which is not signed in. Unfortunate I live in country where csgoempire
+is not licensed and I couldn't see roulette in this case. And I tried two other countries.
+But they were also not licensed. In this case I decided that tests for account which not signed in, is not a bad idea.
+
+
+1. In case of system is new and never were automated or tested before, I would make exploratory testing. Would check
+fun factor, also player perspective testing. Checking if it's fun and compelling enough, if player would like to keep
+playing this game for extended period of time.
+
+2. Creation of test cases
+
+Test Case 1 | Automated
+Name: Verify justify center content
+Preconditions: User is not signed in, button 'Got It' never was pressed in this cache session
+Steps:
+1. The Roulette page should be displayed.
+2. Notification bar should be displayed with text: 'For the month of May, we’re hosting a 10,000 coin daily roulette race.
+Scroll down to see more.' (changing from time to time).
+3. Button with text 'Got it' displayed.
+4. Press 'Got it' button
+5. Notification bar should disappear
+
+Test Case 2 | I would add for automation
+Name: Verify input 'Enter bet amount'
+Steps:
+1. The Roulette page should be displayed.
+2. Input with text 'Enter bet amount...' displayed
+3. Picture of coins should be displayed inside input
+
+
+Test Case 3 | Automated
+Name: Verify numbers of default bets
+Steps:
+1. The Roulette page should be displayed.
+2. Panel with Bets should be displayed
+3. Verify text of bets: 'Clear', '+ 0.01', '+ 0.1', '+ 1', '+ 10', '+ 100', '1/2', 'X 2', 'MAX'
+Expected Results:
+Each field should be in order and have it's own text
+
+
+Test Case 4 | I would add for automation
+Name: Verify you can enter bet amount with numbers from default bets
+Steps:
+1. The Roulette page should be displayed.
+2. Navigate to the bed adjustment section
+3. Use each button ( +0.01, +0.1, +1, +10, +100, 1/2, x2, MAX) and observe the changes in the bet amount.
+Expected Results:
+Each button should adjust the bet amount according to its specific calculation.
+The bet amount should never exceed the maximum allowed or drop below the minimum allowed.
+
+
+Test Case 5| I would add for automation
+Name: Verify Bet Amount validations
+Steps:
+1. The Roulette page should be displayed.
+2. Navigate to the betting interface.
+3. Enter values in the bet amount input (negative value, symbols, non-latin characters, latin characters(expect 'e'),
+try to enter spaces)
+Expected Results:
+The system should prevent entry of non-latin values, symbols, spaces by ignoring entries.
+
+
+Test Case 6 | Automated
+Name: Verify that scientific notation letter 'e' can be entered
+Steps:
+1. The Roulette page should be displayed.
+2. Navigate to the betting interface.
+3. Enter value some value with 'e' (e.g 1e3)
+Expected Results:
+The system should accept value and input should not turn red
+
+
+Test Case 7 | Automated
+Name: Verify "Previous Rolls"
+Steps:
+1. The Roulette page should be displayed.
+2. Button with text 'Previous Rolls' visible
+3. Click on 'Previous Rolls' button
+Expected Results:
+Page with History of previous rolls should be opened
+
+
+Test Case 8 | Automated
+Name: Verify 'Last 100' items block
+Steps:
+1. The Roulette page should be displayed.
+2. Text 'Last 100' should be displayed with 3 pictures with numbers.
+3. Sum on this 3 numbers should be equal to 100
+
+
+Test Case 9 | I would add for automation
+Name: Validate sound on/off on roulette page
+Steps:
+1. The Roulette page should be displayed.
+2. Sound should be 'on' by default
+3. Validate text "Sound on"
+4. Click 'Sound on'
+Expected Results:
+Text was changed to 'Sound off'. Sound of rolling disappeared
+
+
+Test Case 10
+Name: Validate rolling wheel is moving with count from 15 seconds to 0
+Steps:
+1. The Roulette page should be displayed.
+2. On screen should appear text 'Rolling' with countdown from 15 seconds to 0 seconds
+Expected result:
+Images of bets are moving when countdown and text "rolling" are disappeared.
+Observe the 'Rolling' display as the game progresses.
+
+
+Test Case 11 | Automated
+Verify the functionality of the 'Clear' button in the bet amount field.
+Steps:
+1. The Roulette page should be displayed.
+2. Enter a bet amount.
+3. Click on the 'Clear' button.
+Expected Results:
+The bet amount should be cleared completely.
+The input field should show a placeholder or zero value, indicating it is empty.
+
+
+3. For the "Enter Bet Amount" field within a betting platform, security testing is crucial to ensure
+that the system handles various types of potentially malicious input without compromising the system's integrity
+or the user's data.
+
+
+Test Case 11
+Verify that the "Enter Bet Amount" field is immune to SQL Injection attacks
+Steps:
+1. The Roulette page should be displayed. Navigate to the betting interface.
+2. In the "Enter Bet Amount" field, enter an SQL injection payload (e.g 1; DROP TABLE users;--).
+3. Submit the bet.
+Expected Results:
+The input should be sanitized, allowing the system to store or process the input without executing the SQL code.
+
+
+Test Case 12
+Verify test for Cross-Site Scripting (XSS) vulnerabilities in the "Enter Bet Amount" field
+Steps:
+1. The Roulette page should be displayed. Navigate to the betting interface.
+2. Input a script tag with JavaScript code (e.g  <script>alert('XSS')</script>) into the bet amount field.
+Submit the bet and observe the behavior.
+Expected Results:
+The input should be treated as text, and any scripts embedded should not be executed.
+
+
+4. For testing Reliability we should focus on how the system behaves under various conditions, including stress,
+load, and in the face of potential failures. This part of tests we can make, for example, on Jmeter, Apache Benchmark.
+
+Test Case 13
+Validate system performance under high user load
+Steps:
+1. Simulate a high number of users (determined by expected peak usage) accessing the betting interface simultaneously.
+2. Users should perform typical actions such as placing bets, adjusting bet amounts, and viewing game results.
+3. Monitor system response time and amount of taken resources
+Expected Results:
+The system should handle peak load without significant performance degradation. Response times should remain within
+acceptable limits.
+
+Test Case 14
+Ensure the system's resilience under stress conditions
+Steps:
+1. Incrementally increase the load on the system by continuously placing bets
+and adjusting bet amounts beyond typical usage patterns.
+2. Continue until the system reaches its resource limits.
+3. Observe how the system behaves under these extreme conditions.
+Expected Results:
+The system should handle stress by providing meaningful error messages. It should not crash and should recover
+automatically if failures occur.
+
+
+Test Case 15
+Verify test system robustness to network issues
+Steps:
+1. Simulate various network conditions including bad connectivity during active games.
+2. Attempt to place bets and navigate through the interface under these conditions.
+Expected Results:
+The interface should provide feedback on network issues and  try to reconnect.
+User inputs should not be lost and should be processed correctly once connection is back.
+

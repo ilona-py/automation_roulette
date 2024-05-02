@@ -1,0 +1,43 @@
+In this assignment I created small automation framework. I tried to keep it short and understandable.
+For sure we could add more reusable code, less hardcore, allure steps, but I decided to keep it smaller due of lack of time.
+Folders:
+
+base contains:
+-- base_elements: Base with common methods for work with web elements
+-- base_page: Base Page with common methods for work with web page
+
+
+data:
+-- locators: selenium xpath locators we need through our testing
+-- resources: data we can put for reusability
+
+
+documentation:
+-- manual_cases: all tests cases I created for given software. Mostly I tried to create regression tests.
+
+
+game_pages:
+-- roulette: this folder can contain a lot of different pages
+
+
+tests:
+-- conftest
+-- tests
+
+
+In manual tests documentation I added in description which tests I automated. They can be found by number (e.g Test Case 1,
+Test Case 2). Also in description of this tests I added which tests I would like to automate if I had more time. And for sure
+I would make my manual tests more detailed.
+
+Reliability tests I would automate only in Jmeter. Or similar tool.
+Security testing I would automate, but I would not run it every CI. I would run them in case some libraries were updated.
+Or approximately once a week.
+From exactly roulette part, would be hard to automate rolling part with selenium.
+
+I hope everything was understandable.
+Have a great day!
+
+P.S I am so sorry, in the last moment I realized (could not check it before because of only one commit) that I did
+most of work in codeaimoonrail directory. Not in ilona-solomakha-RpjX-roulette-automation-iL4i.
+So right now permissions doesn't work. Please, move my files to codeaimoonrail directory and my tests will work.
+So sorry, had only 6 minutes to fix!
